@@ -1,0 +1,6 @@
+﻿  gameFunctions.c
+C:\Users\jakla\source\repos\CheckersCProject\CheckersCProject\gameFunctions.c(27,30): warning C4047: "funkcja": "GameBoard" różni się w poziomach operatorów pośrednich od "GameBoard *"
+C:\Users\jakla\source\repos\CheckersCProject\CheckersCProject\gameFunctions.c(27,30): warning C4024: "initializeBoard": różne typy dla formalnego i rzeczywistego parametru 1
+C:\Users\jakla\source\repos\CheckersCProject\CheckersCProject\gameFunctions.c(434,1): warning C4028: formalny parametr 1 różni się od deklaracji
+C:\Users\jakla\source\repos\CheckersCProject\CheckersCProject\gameFunctions.c(477,1): warning C4028: formalny parametr 1 różni się od deklaracji
+  CheckersCProject.vcxproj -> C:\Users\jakla\source\repos\CheckersCProject\Debug\CheckersCProject.exe

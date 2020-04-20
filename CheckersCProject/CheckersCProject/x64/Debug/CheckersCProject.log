@@ -1,0 +1,12 @@
+﻿  gameFunctions.c
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(27,30): warning C4047: "funkcja": "GameBoard" różni się w poziomach operatorów pośrednich od "GameBoard *"
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(27,30): warning C4024: "initializeBoard": różne typy dla formalnego i rzeczywistego parametru 1
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(441,1): warning C4028: formalny parametr 1 różni się od deklaracji
+  main.c
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(484,1): warning C4028: formalny parametr 1 różni się od deklaracji
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\main.c(25,26): warning C4047: "funkcja": "GameBoard *" różni się w poziomach operatorów pośrednich od "GameBoard"
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\main.c(25,26): warning C4024: "displayBoard": różne typy dla formalnego i rzeczywistego parametru 1
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\main.c(31,26): warning C4047: "funkcja": "GameBoard *" różni się w poziomach operatorów pośrednich od "GameBoard"
+  Generowanie kodu...
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\main.c(31,26): warning C4024: "displayBoard": różne typy dla formalnego i rzeczywistego parametru 1
+  CheckersCProject.vcxproj -> C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\x64\Debug\CheckersCProject.exe

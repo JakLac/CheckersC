@@ -217,96 +217,9 @@ void movePieces(Piece* pieces, char colour, Piece* enemyPieces)
 					break;
 				}
 			}
-
-
-
 			//checking for enemies to beat
-
-
-
-			for (int i = 0; i < 12; i++)
-			{
-				if (enemyPieces[i].xpos == newxpos && enemyPieces[i].ypos == newypos)
-				{
-					//white is enemy
-					if (enemyPieces[i].colour = 'w')
-					{
-						if (enemyPieces[i].ypos == 0 || enemyPieces[i].xpos == 0 || enemyPieces[i].xpos == 7)
-						{
-							newIncorrect = true;
-							break;
-						}
-						//Now we are checking for the pieces behind the enemy
-
-						for (int y = 0; y < 12; y++)
-						{
-							if (enemyPieces[y].xpos == enemyPieces[i].xpos + 1 && enemyPieces[y].ypos == enemyPieces[i].ypos - 1)
-							{
-								canBeatToRight = false;
-							}
-							if (enemyPieces[y].xpos == enemyPieces[i].xpos - 1 && enemyPieces[y].ypos == enemyPieces[i].ypos - 1)
-							{
-								canBeatToLeft = false;
-							}
-
-						}
-
-						if (canBeatToLeft == false && canBeatToRight == false)
-						{
-							newIncorrect = true;
-
-							break;
-						}
-
-						else if (canBeatToLeft == false && canBeatToRight == true)
-						{
-							printf("%s", "prawo");
-;							newxpos = enemyPieces[i].xpos + 1;
-							newypos = enemyPieces[i].ypos - 1;
-							enemyPieces[i].active = false;
-							break;
-						}
-
-						else if (canBeatToLeft == true && canBeatToRight == false)
-						{
-							printf("%s", "lewo");
-							newxpos = enemyPieces[i].xpos - 1;
-							newypos = enemyPieces[i].ypos - 1;
-							enemyPieces[i].active = false;
-							break;
-						}
-
-						//ADD THE CHOICE
-						else if (canBeatToLeft == true && canBeatToRight == true)
-						{
-							if (enemyPieces[i].xpos > foundPiece->xpos)
-								dir = 'r';
-							else
-								dir = 'l';
-							
-							if (dir == 'r')
-							{
-								printf("%s", "prawo");
-								newxpos = enemyPieces[i].xpos + 1;
-								newypos = enemyPieces[i].ypos - 1;
-								enemyPieces[i].active = false;
-								break;
-							}
-
-							else if (dir == 'l')
-							{
-								printf("%s", "lewo");
-								newxpos = enemyPieces[i].xpos - 1;
-								newypos = enemyPieces[i].ypos - 1;
-								enemyPieces[i].active = false;
-								break;
-							}
-							
-						}
-
-					}
-				}
-			}
+			if(newIncorrect == false && foundPiece->isQueen == false)
+			newIncorrect = CheckForEnemiesAsNotQueen(foundPiece, enemyPieces, &newxpos, &newypos);
 
 		}
 
@@ -330,104 +243,198 @@ void movePieces(Piece* pieces, char colour, Piece* enemyPieces)
 					break;
 				}
 			}
-
 			//checking for enemies to beat
-
-			for (int i = 0; i < 12; i++)
-			{
-				if (enemyPieces[i].xpos == newxpos && enemyPieces[i].ypos == newypos)
-				{
-					//black is enemy
-					if (enemyPieces[i].colour = 'b')
-					{
-						if (enemyPieces[i].ypos == 0 || enemyPieces[i].xpos == 0 || enemyPieces[i].xpos == 7)
-						{
-							newIncorrect = true;
-							break;
-						}
-						//Now we are checking for the pieces behind the enemy
-
-						for (int y = 0; y < 12; y++)
-						{
-							if (enemyPieces[y].xpos == enemyPieces[i].xpos + 1 && enemyPieces[y].ypos == enemyPieces[i].ypos + 1)
-							{
-								canBeatToRight = false;
-							}
-							if (enemyPieces[y].xpos == enemyPieces[i].xpos - 1 && enemyPieces[y].ypos == enemyPieces[i].ypos + 1)
-							{
-								canBeatToLeft = false;
-							}
-
-						}
-
-						if (canBeatToLeft == false && enemyPieces[i].xpos < foundPiece->xpos)
-							canBeatToRight = false;
-						else if (canBeatToRight == false && enemyPieces[i].xpos > foundPiece->xpos)
-							canBeatToLeft = false;
-
-						if (canBeatToLeft == false && canBeatToRight == false)
-						{
-							newIncorrect = true;
-
-							break;
-						}
-
-						else if (canBeatToLeft == false && canBeatToRight == true)
-						{
-							printf("%s", "prawo");
-							newxpos = enemyPieces[i].xpos + 1;
-							newypos = enemyPieces[i].ypos + 1;
-							enemyPieces[i].active = false;
-							break;
-						}
-
-						else if (canBeatToLeft == true && canBeatToRight == false)
-						{
-							printf("%s", "lewo");
-							newxpos = enemyPieces[i].xpos - 1;
-							newypos = enemyPieces[i].ypos + 1;
-							enemyPieces[i].active = false;
-							break;
-						}
-
-						//ADD THE CHOICE
-						else if (canBeatToLeft == true && canBeatToRight == true)
-						{
-							if (enemyPieces[i].xpos > foundPiece->xpos)
-								dir = 'r';
-							else
-								dir = 'l';
-
-							if (dir == 'r')
-							{
-								printf("%s", "prawo");
-								newxpos = enemyPieces[i].xpos + 1;
-								newypos = enemyPieces[i].ypos + 1;
-								enemyPieces[i].active = false;
-								break;
-							}
-
-							else if (dir == 'l')
-							{
-								printf("%s", "lewo");
-								newxpos = enemyPieces[i].xpos - 1;
-								newypos = enemyPieces[i].ypos + 1;
-								enemyPieces[i].active = false;
-								break;
-							}
-
-						}
-
-					}
-				}
-			}
-
+			if(newIncorrect == false && foundPiece->isQueen == false)
+			newIncorrect = CheckForEnemiesAsNotQueen(foundPiece, enemyPieces, &newxpos, &newypos);
 		}
 		//TO ADD: checking whether the piece has become a queen
 	} while (newIncorrect);
 
 	foundPiece->xpos = newxpos;
 	foundPiece->ypos = newypos;
+}
+
+bool CheckForEnemiesAsNotQueen(Piece* foundPiece, Piece* enemyPieces, int *newxpos, int *newypos)
+{
+	bool newIncorrect = false;
+	bool canBeatToLeft = true;
+	bool canBeatToRight = true;
+	char dir = 'z';
+
+	newIncorrect = false;
+	if (foundPiece->colour == 'b')
+	{
+		for (int i = 0; i < 12; i++)
+		{
+			if (enemyPieces[i].xpos == *newxpos && enemyPieces[i].ypos == *newypos)
+			{
+					if (enemyPieces[i].ypos == 0 || enemyPieces[i].xpos == 0 || enemyPieces[i].xpos == 7)
+					{
+						newIncorrect = true;
+						break;
+					}
+					//Now we are checking for the pieces behind the enemy
+
+					for (int y = 0; y < 12; y++)
+					{
+						if (enemyPieces[y].xpos == enemyPieces[i].xpos + 1 && enemyPieces[y].ypos == enemyPieces[i].ypos - 1)
+						{
+							canBeatToRight = false;
+						}
+						if (enemyPieces[y].xpos == enemyPieces[i].xpos - 1 && enemyPieces[y].ypos == enemyPieces[i].ypos - 1)
+						{
+							canBeatToLeft = false;
+						}
+
+					}
+
+					if (canBeatToLeft == false && canBeatToRight == false)
+					{
+						newIncorrect = true;
+
+						break;
+					}
+
+					else if (canBeatToLeft == false && canBeatToRight == true)
+					{
+						printf("%s", "prawo");
+						*newxpos = enemyPieces[i].xpos + 1;
+						*newypos = enemyPieces[i].ypos - 1;
+						enemyPieces[i].active = false;
+						break;
+					}
+
+					else if (canBeatToLeft == true && canBeatToRight == false)
+					{
+						printf("%s", "lewo");
+						*newxpos = enemyPieces[i].xpos - 1;
+						*newypos = enemyPieces[i].ypos - 1;
+						enemyPieces[i].active = false;
+						break;
+					}
+
+					//ADD THE CHOICE
+					else if (canBeatToLeft == true && canBeatToRight == true)
+					{
+						if (enemyPieces[i].xpos > foundPiece->xpos)
+							dir = 'r';
+						else
+							dir = 'l';
+
+						if (dir == 'r')
+						{
+							printf("%s", "prawo");
+							*newxpos = enemyPieces[i].xpos + 1;
+							*newypos = enemyPieces[i].ypos - 1;
+							enemyPieces[i].active = false;
+							break;
+						}
+
+						else if (dir == 'l')
+						{
+							printf("%s", "lewo");
+							*newxpos = enemyPieces[i].xpos - 1;
+							*newypos = enemyPieces[i].ypos - 1;
+							enemyPieces[i].active = false;
+							break;
+						}
+
+					}
+
+				
+			}
+		}
+	}
+
+	else if (foundPiece->colour == 'w')
+	{
+		for (int i = 0; i < 12; i++)
+		{
+			if (enemyPieces[i].xpos == *newxpos && enemyPieces[i].ypos == *newypos)
+			{
+				//black is enemy
+					if (enemyPieces[i].ypos == 0 || enemyPieces[i].xpos == 0 || enemyPieces[i].xpos == 7)
+					{
+						newIncorrect = true;
+						break;
+					}
+					//Now we are checking for the pieces behind the enemy
+
+					for (int y = 0; y < 12; y++)
+					{
+						if (enemyPieces[y].xpos == enemyPieces[i].xpos + 1 && enemyPieces[y].ypos == enemyPieces[i].ypos + 1)
+						{
+							canBeatToRight = false;
+						}
+						if (enemyPieces[y].xpos == enemyPieces[i].xpos - 1 && enemyPieces[y].ypos == enemyPieces[i].ypos + 1)
+						{
+							canBeatToLeft = false;
+						}
+
+					}
+
+					if (canBeatToLeft == false && enemyPieces[i].xpos < foundPiece->xpos)
+						canBeatToRight = false;
+					else if (canBeatToRight == false && enemyPieces[i].xpos > foundPiece->xpos)
+						canBeatToLeft = false;
+
+					if (canBeatToLeft == false && canBeatToRight == false)
+					{
+						newIncorrect = true;
+
+						break;
+					}
+
+					else if (canBeatToLeft == false && canBeatToRight == true)
+					{
+						printf("%s", "prawo");
+						*newxpos = enemyPieces[i].xpos + 1;
+						*newypos = enemyPieces[i].ypos + 1;
+						enemyPieces[i].active = false;
+						break;
+					}
+
+					else if (canBeatToLeft == true && canBeatToRight == false)
+					{
+						printf("%s", "lewo");
+						*newxpos = enemyPieces[i].xpos - 1;
+						*newypos = enemyPieces[i].ypos + 1;
+						enemyPieces[i].active = false;
+						break;
+					}
+
+					//ADD THE CHOICE
+					else if (canBeatToLeft == true && canBeatToRight == true)
+					{
+						if (enemyPieces[i].xpos > foundPiece->xpos)
+							dir = 'r';
+						else
+							dir = 'l';
+
+						if (dir == 'r')
+						{
+							printf("%s", "prawo");
+							*newxpos = enemyPieces[i].xpos + 1;
+							*newypos = enemyPieces[i].ypos + 1;
+							enemyPieces[i].active = false;
+							break;
+						}
+
+						else if (dir == 'l')
+						{
+							printf("%s", "lewo");
+							*newxpos = enemyPieces[i].xpos - 1;
+							*newypos = enemyPieces[i].ypos + 1;
+							enemyPieces[i].active = false;
+							break;
+						}
+
+					}
+
+			}
+		}
+	}
+	return newIncorrect;
 }
 
 void initializeBoard(GameBoard* board)

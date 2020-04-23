@@ -34,6 +34,7 @@ void updateBoard(Piece* blacks, Piece* whites, GameBoard* board);
 void initializeGame(Game* game);
 void initializeBoard(GameBoard board);
 void displayBoard(GameBoard*board);
-bool CheckForEnemiesAsNotQueen(Piece* activePiece, Piece* enemyPieces, int* newxpos, int* newypos);
+bool checkForEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece* ownPieces, int* newxpos, int* newypos);
+bool checkForEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces, Piece* ownPieces, int* newxpos, int* newypos);
 
 

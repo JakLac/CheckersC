@@ -121,56 +121,66 @@ void initializeWhitePieces(Piece* pieces)
 
 }
 
-void movePieces(Piece* pieces, char colour, Piece* enemyPieces)
+Piece* InputFindPiece(Piece* pieces,int *xpos, int *ypos, char colour)
 {
-	
-	int xpos, ypos;
-	printf("%s", "First give xpos, then ypos (0-7)");
-	scanf("%d", &xpos);
-	scanf("%d", &ypos);
-	bool incorrect = false;
-	if (xpos < 0 || ypos < 0 || xpos>7 || ypos>7)
-		incorrect = true;
 
-	while (incorrect)
+	bool incorrect = false;
+	printf("%s", "First give xpos, then ypos (0-7)");
+
+	do
 	{
+		printf("%c", colour);
+		if(incorrect)
 		printf("%s", "Incorrect input!");
-		scanf("%d", &xpos);
-		scanf("%d", &ypos);
+		scanf("%d", xpos);
+		scanf("%d", ypos);
+		printf("%d", *xpos);
+		printf("%d", *ypos);
 		incorrect = false;
-		if (xpos < 0 || ypos < 0 || xpos>7 || ypos>7)
+		if (*xpos < 0 || *ypos < 0 || *xpos>7 || *ypos>7)
 			incorrect = true;
-	}
+	} while (incorrect);
 
 	Piece* foundPiece = NULL;
 
 
-	bool found = false;
-	for (int i = 0; i < 12; i++)
+	bool found = true;
+
+	do
 	{
-		if (pieces[i].xpos == xpos && pieces[i].ypos == ypos && pieces[i].colour == colour)
+		if (found == false)
 		{
-			found = true;
-			foundPiece = &pieces[i];
+			printf("%s", "Piece not there!");
+			scanf("%d", xpos);
+			scanf("%d", ypos);
 		}
-
-
-	}
-
-	while (!found)
-	{
-		printf("%s", "Piece not there!");
-		scanf("%d", &xpos);
-		scanf("%d", &ypos);
 		for (int i = 0; i < 12; i++)
 		{
-			if (pieces[i].xpos == xpos && pieces[i].ypos == ypos && pieces[i].colour == colour)
+			if (pieces[i].xpos == *xpos && pieces[i].ypos == *ypos && pieces[i].colour == colour)
 			{
 				found = true;
 				foundPiece = &pieces[i];
 			}
 		}
+		if (foundPiece == NULL)
+			found = false;
+	} while (found == false);
+
+	return foundPiece;
+}
+
+void movePieces(Piece* pieces, char colour, Piece* enemyPieces)
+{
+	
+	int xpos, ypos;
+	bool incorrect = false;
+	Piece* foundPiece = NULL;
+
+	while (foundPiece == NULL)
+	{
+		foundPiece = InputFindPiece(pieces, &xpos, &ypos, colour);
 	}
+
 
 	int newxpos, newypos;
 	printf("%s", "Where would you like to move to? xpos first, then ypos");

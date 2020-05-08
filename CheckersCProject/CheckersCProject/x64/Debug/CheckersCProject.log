@@ -3,6 +3,13 @@ C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProje
 C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(27,30): warning C4024: "initializeBoard": różne typy dla formalnego i rzeczywistego parametru 1
 C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(125,1): warning C4028: formalny parametr 2 różni się od deklaracji
 C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(125,1): warning C4028: formalny parametr 3 różni się od deklaracji
-C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(456,1): warning C4028: formalny parametr 1 różni się od deklaracji
-C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(499,1): warning C4028: formalny parametr 1 różni się od deklaracji
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(511,16): warning C4553: „==”: Wynik wyrażenia nie jest używany; czy chodziło Ci o „=”?
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(523,21): warning C4553: „==”: Wynik wyrażenia nie jest używany; czy chodziło Ci o „=”?
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(531,22): warning C4553: „==”: Wynik wyrażenia nie jest używany; czy chodziło Ci o „=”?
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(540,10): warning C4477: „scanf”: ciąg formatu „%c” wymaga argumentu typu „char *”, ale argument 1 ze zmienną liczbą argumentów ma typ „int”
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(546,22): warning C4553: „==”: Wynik wyrażenia nie jest używany; czy chodziło Ci o „=”?
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(553,23): warning C4553: „==”: Wynik wyrażenia nie jest używany; czy chodziło Ci o „=”?
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(560,1): warning C4028: formalny parametr 1 różni się od deklaracji
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(603,1): warning C4028: formalny parametr 1 różni się od deklaracji
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(557): warning C4715: "checkForFurtherEnemiesAsNotQueenBlack”: niewszystkie ścieżki kodu zwracają wartość
   CheckersCProject.vcxproj -> C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\x64\Debug\CheckersCProject.exe

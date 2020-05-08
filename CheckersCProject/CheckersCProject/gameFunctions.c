@@ -266,6 +266,7 @@ void movePieces(Piece* pieces, char colour, Piece* enemyPieces)
 
 bool checkForEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece* ownPieces, int* newxpos, int* newypos)
 {
+	bool hasBeaten = false;
 	bool newIncorrect = false;
 	bool canBeatToLeft = true;
 	bool canBeatToRight = true;
@@ -309,6 +310,7 @@ bool checkForEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece
 				*newxpos = enemyPieces[i].xpos + 1;
 				*newypos = enemyPieces[i].ypos - 1;
 				enemyPieces[i].active = false;
+				hasBeaten = true;
 				break;
 			}
 
@@ -318,6 +320,7 @@ bool checkForEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece
 				*newxpos = enemyPieces[i].xpos - 1;
 				*newypos = enemyPieces[i].ypos - 1;
 				enemyPieces[i].active = false;
+				hasBeaten = true;
 				break;
 			}
 
@@ -335,6 +338,7 @@ bool checkForEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece
 					*newxpos = enemyPieces[i].xpos + 1;
 					*newypos = enemyPieces[i].ypos - 1;
 					enemyPieces[i].active = false;
+					hasBeaten = true;
 					break;
 				}
 
@@ -344,6 +348,7 @@ bool checkForEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece
 					*newxpos = enemyPieces[i].xpos - 1;
 					*newypos = enemyPieces[i].ypos - 1;
 					enemyPieces[i].active = false;
+					hasBeaten = true;	
 					break;
 				}
 
@@ -351,12 +356,16 @@ bool checkForEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece
 
 
 		}
+			
 	}
+	while (hasBeaten)
+		hasBeaten = checkForFurtherEnemiesAsNotQueenBlack(foundPiece, enemyPieces, ownPieces, newxpos, newypos);
 	return newIncorrect;
 }
 
 bool checkForEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces, Piece* ownPieces, int* newxpos, int* newypos)
 {
+	bool hasBeaten = false;
 	bool newIncorrect = false;
 	bool canBeatToLeft = true;
 	bool canBeatToRight = true;
@@ -405,6 +414,7 @@ bool checkForEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces, Piece
 				*newxpos = enemyPieces[i].xpos + 1;
 				*newypos = enemyPieces[i].ypos + 1;
 				enemyPieces[i].active = false;
+				hasBeaten = true;
 				break;
 			}
 
@@ -414,6 +424,7 @@ bool checkForEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces, Piece
 				*newxpos = enemyPieces[i].xpos - 1;
 				*newypos = enemyPieces[i].ypos + 1;
 				enemyPieces[i].active = false;
+				hasBeaten = true;
 				break;
 			}
 
@@ -431,6 +442,7 @@ bool checkForEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces, Piece
 					*newxpos = enemyPieces[i].xpos + 1;
 					*newypos = enemyPieces[i].ypos + 1;
 					enemyPieces[i].active = false;
+					hasBeaten = true;
 					break;
 				}
 
@@ -440,6 +452,7 @@ bool checkForEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces, Piece
 					*newxpos = enemyPieces[i].xpos - 1;
 					*newypos = enemyPieces[i].ypos + 1;
 					enemyPieces[i].active = false;
+					hasBeaten = true;
 					break;
 				}
 
@@ -450,7 +463,103 @@ bool checkForEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces, Piece
 	return newIncorrect;
 }
 
+bool checkForFurtherEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece* ownPieces, int* newxpos, int* newypos)
+{
+	Piece* leftEnemy = NULL;
+	Piece* rightEnemy = NULL;
+	char dir = 'z';
+	bool canBeatRight = false;
+	bool canBeatLeft = false;
+	
+	for (int i = 0; i < 12; i++)
+	{
+		if (enemyPieces[i].xpos == *newxpos + 1 && enemyPieces[i].ypos == *newypos - 1)
+		{
+			rightEnemy = &enemyPieces[i];
+			canBeatRight = true;
+		}
+		else if (enemyPieces[i].xpos == *newxpos - 1 && enemyPieces[i].ypos == *newypos - 1)
+		{
+			leftEnemy = &enemyPieces[i];
+			canBeatLeft = true;
+		}
+	}
 
+	//Checking for pieces behind the enemies
+	//Leftenemy can only be beaten to the left
+	if (leftEnemy)
+	{
+		for (int i = 0; i < 12; i++)
+		{
+			if (enemyPieces[i].xpos == leftEnemy->xpos - 1 && enemyPieces[i].ypos == leftEnemy->ypos - 1)
+				canBeatLeft = false;
+		}
+	}
+
+	//Leftenemy can only be beaten to the right
+	if (rightEnemy)
+	{
+		for (int i = 0; i < 12; i++)
+		{
+			if (enemyPieces[i].xpos == rightEnemy->xpos - 1 && enemyPieces[i].ypos == rightEnemy->ypos - 1)
+				canBeatRight = false;
+		}
+	}
+
+	//If its impossible to move, end the sequence
+
+
+	//Condition so it doesnt jump out of the board
+	if (leftEnemy->ypos == 0 || leftEnemy->xpos == 0)
+		canBeatLeft = false;
+	if (rightEnemy->ypos == 0 || rightEnemy->xpos == 7)
+		canBeatRight == false;
+
+	if (canBeatLeft == false && canBeatRight == false)
+	{
+		return false;
+	}
+
+	//checking all the cases
+	else if (canBeatLeft == true && canBeatRight == false)
+	{
+		*newxpos = leftEnemy->xpos - 1;
+		*newypos = leftEnemy->ypos - 1;
+		leftEnemy->active == false;
+		return true;
+	}
+
+	else if (canBeatLeft == false && canBeatRight == true)
+	{
+		*newxpos = leftEnemy->xpos + 1;
+		*newypos = leftEnemy->ypos - 1;
+		rightEnemy->active == false;
+		return true;
+	}
+
+	else if (canBeatLeft == true && canBeatRight == true)
+	{
+		printf("%s", "(L)eft or (R)ight?");
+		while (dir != 'l' && dir != 'r')
+		{
+			scanf("%c", dir);
+		}
+		if (dir == 'l')
+		{
+			*newxpos = leftEnemy->xpos - 1;
+			*newypos = leftEnemy->ypos - 1;
+			leftEnemy->active == false;
+			return true;
+		}
+		else if (dir == 'r')
+		{
+			*newxpos = leftEnemy->xpos + 1;
+			*newypos = leftEnemy->ypos - 1;
+			rightEnemy->active == false;
+			return true;
+		}
+	}
+}
 
 void initializeBoard(GameBoard* board)
 {

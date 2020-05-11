@@ -39,7 +39,7 @@ void initializeBlackPieces(Piece* pieces)
 	pieces[0].xpos = 0;
 
 	pieces[1].ypos = 5;
-	pieces[1].xpos = 2;
+	pieces[1].xpos = 2; 
 
 	pieces[2].ypos = 5;
 	pieces[2].xpos = 4;
@@ -107,11 +107,11 @@ void initializeWhitePieces(Piece* pieces)
 	pieces[8].ypos = 2;
 	pieces[8].xpos = 1;
 
-	pieces[9].ypos = 2;
+	pieces[9].ypos = 2; 
 	pieces[9].xpos = 3;
 
-	pieces[10].ypos = 2;
-	pieces[10].xpos = 5;
+	pieces[10].ypos = 4; 
+	pieces[10].xpos = 3; 
 
 	pieces[11].ypos = 2;
 	pieces[11].xpos = 7;
@@ -501,19 +501,26 @@ bool checkForFurtherEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces
 	{
 		for (int i = 0; i < 12; i++)
 		{
-			if (enemyPieces[i].xpos == rightEnemy->xpos - 1 && enemyPieces[i].ypos == rightEnemy->ypos - 1)
+			if (enemyPieces[i].xpos == rightEnemy->xpos + 1 && enemyPieces[i].ypos == rightEnemy->ypos - 1)
 				canBeatRight = false;
 		}
 	}
 
 	//If its impossible to move, end the sequence
-
+	if (leftEnemy == NULL && rightEnemy == NULL)
+		return false;
 
 	//Condition so it doesnt jump out of the board
-	if (leftEnemy->ypos == 0 || leftEnemy->xpos == 0)
-		canBeatLeft = false;
-	if (rightEnemy->ypos == 0 || rightEnemy->xpos == 7)
-		canBeatRight == false;
+	if (leftEnemy != NULL)
+	{
+		if (leftEnemy->ypos == 0 || leftEnemy->xpos == 0)
+			canBeatLeft = false;
+	}
+	if (rightEnemy != NULL)
+	{
+		if (rightEnemy->ypos == 0 || rightEnemy->xpos == 7)
+			canBeatRight = false;
+	}
 
 	if (canBeatLeft == false && canBeatRight == false)
 	{
@@ -525,15 +532,15 @@ bool checkForFurtherEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces
 	{
 		*newxpos = leftEnemy->xpos - 1;
 		*newypos = leftEnemy->ypos - 1;
-		leftEnemy->active == false;
+		leftEnemy->active = false;
 		return true;
 	}
 
 	else if (canBeatLeft == false && canBeatRight == true)
 	{
-		*newxpos = leftEnemy->xpos + 1;
-		*newypos = leftEnemy->ypos - 1;
-		rightEnemy->active == false;
+		*newxpos = rightEnemy->xpos + 1;
+		*newypos = rightEnemy->ypos - 1;
+		rightEnemy->active = false;
 		return true;
 	}
 
@@ -548,14 +555,14 @@ bool checkForFurtherEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces
 		{
 			*newxpos = leftEnemy->xpos - 1;
 			*newypos = leftEnemy->ypos - 1;
-			leftEnemy->active == false;
+			leftEnemy->active = false;
 			return true;
 		}
 		else if (dir == 'r')
 		{
 			*newxpos = leftEnemy->xpos + 1;
 			*newypos = leftEnemy->ypos - 1;
-			rightEnemy->active == false;
+			rightEnemy->active = false;
 			return true;
 		}
 	}
@@ -587,7 +594,7 @@ void updateBoard(Piece* blacks, Piece* whites, GameBoard* board)
 		{
 			(*board)[i][y] = '0';
 		}
-
+	}
 		for (int i = 0; i < 12; i++)
 		{
 			if (blacks[i].active)
@@ -599,7 +606,7 @@ void updateBoard(Piece* blacks, Piece* whites, GameBoard* board)
 				(*board)[whites[i].ypos][whites[i].xpos] = whites[i].colour;
 			}
 		}
-	}
+	
 }
 
 

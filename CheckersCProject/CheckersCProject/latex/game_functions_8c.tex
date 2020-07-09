@@ -1,0 +1,307 @@
+\hypertarget{game_functions_8c}{}\doxysection{game\+Functions.\+c File Reference}
+\label{game_functions_8c}\index{gameFunctions.c@{gameFunctions.c}}
+
+
+Definicje funkcji z pliku \mbox{\hyperlink{game_functions_8h}{game\+Functions.\+h}}.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}game\+Functions.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game_functions_8c_af32efe2f6206805de4dabc60155fc92c}{initialize\+Game}} (\mbox{\hyperlink{struct_game}{Game}} $\ast$game)
+\item 
+void \mbox{\hyperlink{game_functions_8c_abda8a273033f5b06e1c7ead1b0afc118}{initialize\+Black\+Pieces}} (\mbox{\hyperlink{struct_piece}{Piece}} $\ast$pieces)
+\item 
+void \mbox{\hyperlink{game_functions_8c_a0a84b29c96d0de23f6c59d3be956012b}{initialize\+White\+Pieces}} (\mbox{\hyperlink{struct_piece}{Piece}} $\ast$pieces)
+\item 
+\mbox{\Hypertarget{game_functions_8c_aefb5943bf034e726f396e6e89949a003}\label{game_functions_8c_aefb5943bf034e726f396e6e89949a003}} 
+\mbox{\hyperlink{struct_piece}{Piece}} $\ast$ {\bfseries Input\+Find\+Piece} (\mbox{\hyperlink{struct_piece}{Piece}} $\ast$pieces, int $\ast$xpos, int $\ast$ypos, char colour)
+\item 
+void \mbox{\hyperlink{game_functions_8c_a589c4b9c5e452dbc457ac2d036c3395c}{move\+Pieces}} (\mbox{\hyperlink{struct_piece}{Piece}} $\ast$pieces, char colour, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$enemy\+Pieces)
+\item 
+bool \mbox{\hyperlink{game_functions_8c_afba516288013563e9962f0e6be29e2c8}{check\+For\+Enemies\+As\+Not\+Queen\+Black}} (\mbox{\hyperlink{struct_piece}{Piece}} $\ast$found\+Piece, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$enemy\+Pieces, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$own\+Pieces, int $\ast$newxpos, int $\ast$newypos)
+\item 
+bool \mbox{\hyperlink{game_functions_8c_a3018bba17054b67f1eeb896f8bf09108}{check\+For\+Enemies\+As\+Not\+Queen\+White}} (\mbox{\hyperlink{struct_piece}{Piece}} $\ast$found\+Piece, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$enemy\+Pieces, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$own\+Pieces, int $\ast$newxpos, int $\ast$newypos)
+\item 
+bool \mbox{\hyperlink{game_functions_8c_a4d8454b5a385866ffe954d715ae72bc4}{check\+For\+Further\+Enemies\+As\+Not\+Queen\+Black}} (\mbox{\hyperlink{struct_piece}{Piece}} $\ast$found\+Piece, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$enemy\+Pieces, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$own\+Pieces, int $\ast$newxpos, int $\ast$newypos)
+\item 
+bool \mbox{\hyperlink{game_functions_8c_afb171a621844983a4287cd47bb19781f}{check\+For\+Further\+Enemies\+As\+Not\+Queen\+White}} (\mbox{\hyperlink{struct_piece}{Piece}} $\ast$found\+Piece, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$enemy\+Pieces, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$own\+Pieces, int $\ast$newxpos, int $\ast$newypos)
+\item 
+bool \mbox{\hyperlink{game_functions_8c_a08cd0369f01ff66fc711c0a04a4597e3}{check\+For\+Enemies\+As\+Queen}} (\mbox{\hyperlink{struct_piece}{Piece}} $\ast$found\+Piece, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$enemy\+Pieces, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$own\+Pieces, int $\ast$newxpos, int $\ast$newypos)
+\item 
+bool \mbox{\hyperlink{game_functions_8c_a3941071af44dcc1e066b0ca123c750ad}{check\+For\+Further\+Enemies\+As\+Queen}} (\mbox{\hyperlink{struct_piece}{Piece}} $\ast$found\+Piece, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$enemy\+Pieces, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$own\+Pieces, int $\ast$newxpos, int $\ast$newypos)
+\item 
+void \mbox{\hyperlink{game_functions_8c_a7a85d002b84c12d2ffb304c763e3cd44}{check\+If\+Became\+Queen}} (\mbox{\hyperlink{struct_piece}{Piece}} $\ast$foundpiece)
+\item 
+void \mbox{\hyperlink{game_functions_8c_aee5afcb9d50dd1b5dbf39576f7451a19}{initialize\+Board}} (\mbox{\hyperlink{game_functions_8h_a5d4aa96c0c332952260890f2254c8a5a}{Game\+Board}} $\ast$board)
+\item 
+void \mbox{\hyperlink{game_functions_8c_a97b893e109deb1cf3eef412840675dc1}{update\+Board}} (\mbox{\hyperlink{struct_piece}{Piece}} $\ast$blacks, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$whites, \mbox{\hyperlink{game_functions_8h_a5d4aa96c0c332952260890f2254c8a5a}{Game\+Board}} $\ast$board)
+\item 
+void \mbox{\hyperlink{game_functions_8c_a6c37bfb08d60b5a921d61b27175793aa}{display\+Board}} (\mbox{\hyperlink{game_functions_8h_a5d4aa96c0c332952260890f2254c8a5a}{Game\+Board}} board)
+\item 
+bool \mbox{\hyperlink{game_functions_8c_a0a66a0d331071565e7f72fd4f7a5fa24}{check\+If\+Finish}} (\mbox{\hyperlink{struct_piece}{Piece}} $\ast$blacks, \mbox{\hyperlink{struct_piece}{Piece}} $\ast$whites)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char {\bfseries default\+Game\+Board} \mbox{[}8\mbox{]}\mbox{[}8\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definicje funkcji z pliku \mbox{\hyperlink{game_functions_8h}{game\+Functions.\+h}}. 
+
+Plik zawiera definicje wszystkich funkcji z \mbox{\hyperlink{game_functions_8h}{game\+Functions.\+h}} 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{game_functions_8c_afba516288013563e9962f0e6be29e2c8}\label{game_functions_8c_afba516288013563e9962f0e6be29e2c8}} 
+\index{gameFunctions.c@{gameFunctions.c}!checkForEnemiesAsNotQueenBlack@{checkForEnemiesAsNotQueenBlack}}
+\index{checkForEnemiesAsNotQueenBlack@{checkForEnemiesAsNotQueenBlack}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{checkForEnemiesAsNotQueenBlack()}{checkForEnemiesAsNotQueenBlack()}}
+{\footnotesize\ttfamily bool check\+For\+Enemies\+As\+Not\+Queen\+Black (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{found\+Piece,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{enemy\+Pieces,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{own\+Pieces,  }\item[{int $\ast$}]{newxpos,  }\item[{int $\ast$}]{newypos }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za szukanie przeciwników jako czarna nie-\/królowa 
+\begin{DoxyParams}{Parameters}
+{\em found\+Piece} & pionek dla którego rozpatrujemy sytuacje \\
+\hline
+{\em enemy\+Pieces} & wskaŸnik na pionki przeciwnika \\
+\hline
+{\em own\+Pieces} & wskaŸnik na w³asne pionki \\
+\hline
+{\em newxpos} & nowa pozycja na osi x \\
+\hline
+{\em newypos} & nowa pozycja na osi y \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_functions_8c_a3018bba17054b67f1eeb896f8bf09108}\label{game_functions_8c_a3018bba17054b67f1eeb896f8bf09108}} 
+\index{gameFunctions.c@{gameFunctions.c}!checkForEnemiesAsNotQueenWhite@{checkForEnemiesAsNotQueenWhite}}
+\index{checkForEnemiesAsNotQueenWhite@{checkForEnemiesAsNotQueenWhite}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{checkForEnemiesAsNotQueenWhite()}{checkForEnemiesAsNotQueenWhite()}}
+{\footnotesize\ttfamily bool check\+For\+Enemies\+As\+Not\+Queen\+White (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{found\+Piece,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{enemy\+Pieces,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{own\+Pieces,  }\item[{int $\ast$}]{newxpos,  }\item[{int $\ast$}]{newypos }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za szukanie przeciwników jako bia³a nie-\/królowa 
+\begin{DoxyParams}{Parameters}
+{\em found\+Piece} & pionek dla którego rozpatrujemy sytuacje \\
+\hline
+{\em enemy\+Pieces} & wskaŸnik na pionki przeciwnika \\
+\hline
+{\em own\+Pieces} & wskaŸnik na w³asne pionki \\
+\hline
+{\em newxpos} & nowa pozycja na osi x \\
+\hline
+{\em newypos} & nowa pozycja na osi y \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_functions_8c_a08cd0369f01ff66fc711c0a04a4597e3}\label{game_functions_8c_a08cd0369f01ff66fc711c0a04a4597e3}} 
+\index{gameFunctions.c@{gameFunctions.c}!checkForEnemiesAsQueen@{checkForEnemiesAsQueen}}
+\index{checkForEnemiesAsQueen@{checkForEnemiesAsQueen}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{checkForEnemiesAsQueen()}{checkForEnemiesAsQueen()}}
+{\footnotesize\ttfamily bool check\+For\+Enemies\+As\+Queen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{found\+Piece,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{enemy\+Pieces,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{own\+Pieces,  }\item[{int $\ast$}]{newxpos,  }\item[{int $\ast$}]{newypos }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za szukanie przeciwników jako królowa dowolnego koloru 
+\begin{DoxyParams}{Parameters}
+{\em found\+Piece} & pionek dla którego rozpatrujemy sytuacje \\
+\hline
+{\em enemy\+Pieces} & wskaŸnik na pionki przeciwnika \\
+\hline
+{\em own\+Pieces} & wskaŸnik na w³asne pionki \\
+\hline
+{\em newxpos} & nowa pozycja na osi x \\
+\hline
+{\em newypos} & nowa pozycja na osi y \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_functions_8c_a4d8454b5a385866ffe954d715ae72bc4}\label{game_functions_8c_a4d8454b5a385866ffe954d715ae72bc4}} 
+\index{gameFunctions.c@{gameFunctions.c}!checkForFurtherEnemiesAsNotQueenBlack@{checkForFurtherEnemiesAsNotQueenBlack}}
+\index{checkForFurtherEnemiesAsNotQueenBlack@{checkForFurtherEnemiesAsNotQueenBlack}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{checkForFurtherEnemiesAsNotQueenBlack()}{checkForFurtherEnemiesAsNotQueenBlack()}}
+{\footnotesize\ttfamily bool check\+For\+Further\+Enemies\+As\+Not\+Queen\+Black (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{found\+Piece,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{enemy\+Pieces,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{own\+Pieces,  }\item[{int $\ast$}]{newxpos,  }\item[{int $\ast$}]{newypos }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za szukanie dalszych (po zbiciu) przeciwników jako czarna nie-\/królowa 
+\begin{DoxyParams}{Parameters}
+{\em found\+Piece} & pionek dla którego rozpatrujemy sytuacje \\
+\hline
+{\em enemy\+Pieces} & wskaŸnik na pionki przeciwnika \\
+\hline
+{\em own\+Pieces} & wskaŸnik na w³asne pionki \\
+\hline
+{\em newxpos} & nowa pozycja na osi x \\
+\hline
+{\em newypos} & nowa pozycja na osi y \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_functions_8c_afb171a621844983a4287cd47bb19781f}\label{game_functions_8c_afb171a621844983a4287cd47bb19781f}} 
+\index{gameFunctions.c@{gameFunctions.c}!checkForFurtherEnemiesAsNotQueenWhite@{checkForFurtherEnemiesAsNotQueenWhite}}
+\index{checkForFurtherEnemiesAsNotQueenWhite@{checkForFurtherEnemiesAsNotQueenWhite}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{checkForFurtherEnemiesAsNotQueenWhite()}{checkForFurtherEnemiesAsNotQueenWhite()}}
+{\footnotesize\ttfamily bool check\+For\+Further\+Enemies\+As\+Not\+Queen\+White (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{found\+Piece,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{enemy\+Pieces,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{own\+Pieces,  }\item[{int $\ast$}]{newxpos,  }\item[{int $\ast$}]{newypos }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za szukanie dalszych (po zbiciu) przeciwników jako bia³a nie-\/królowa 
+\begin{DoxyParams}{Parameters}
+{\em found\+Piece} & pionek dla którego rozpatrujemy sytuacje \\
+\hline
+{\em enemy\+Pieces} & wskaŸnik na pionki przeciwnika \\
+\hline
+{\em own\+Pieces} & wskaŸnik na w³asne pionki \\
+\hline
+{\em newxpos} & nowa pozycja na osi x \\
+\hline
+{\em newypos} & nowa pozycja na osi y \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_functions_8c_a3941071af44dcc1e066b0ca123c750ad}\label{game_functions_8c_a3941071af44dcc1e066b0ca123c750ad}} 
+\index{gameFunctions.c@{gameFunctions.c}!checkForFurtherEnemiesAsQueen@{checkForFurtherEnemiesAsQueen}}
+\index{checkForFurtherEnemiesAsQueen@{checkForFurtherEnemiesAsQueen}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{checkForFurtherEnemiesAsQueen()}{checkForFurtherEnemiesAsQueen()}}
+{\footnotesize\ttfamily bool check\+For\+Further\+Enemies\+As\+Queen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{found\+Piece,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{enemy\+Pieces,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{own\+Pieces,  }\item[{int $\ast$}]{newxpos,  }\item[{int $\ast$}]{newypos }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za szukanie dalszych (po zbiciu) przeciwników jako królowa dowolnego koloru 
+\begin{DoxyParams}{Parameters}
+{\em found\+Piece} & pionek dla którego rozpatrujemy sytuacje \\
+\hline
+{\em enemy\+Pieces} & wskaŸnik na pionki przeciwnika \\
+\hline
+{\em own\+Pieces} & wskaŸnik na w³asne pionki \\
+\hline
+{\em newxpos} & nowa pozycja na osi x \\
+\hline
+{\em newypos} & nowa pozycja na osi y \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_functions_8c_a7a85d002b84c12d2ffb304c763e3cd44}\label{game_functions_8c_a7a85d002b84c12d2ffb304c763e3cd44}} 
+\index{gameFunctions.c@{gameFunctions.c}!checkIfBecameQueen@{checkIfBecameQueen}}
+\index{checkIfBecameQueen@{checkIfBecameQueen}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{checkIfBecameQueen()}{checkIfBecameQueen()}}
+{\footnotesize\ttfamily void check\+If\+Became\+Queen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{foundpiece }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za sprawdzenie czy dany pionek koñcz¹cy sw¹ turê zosta³ królow¹ 
+\begin{DoxyParams}{Parameters}
+{\em foundpiece} & pionek dla którego rozpatrujemy sytuacje \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_functions_8c_a0a66a0d331071565e7f72fd4f7a5fa24}\label{game_functions_8c_a0a66a0d331071565e7f72fd4f7a5fa24}} 
+\index{gameFunctions.c@{gameFunctions.c}!checkIfFinish@{checkIfFinish}}
+\index{checkIfFinish@{checkIfFinish}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{checkIfFinish()}{checkIfFinish()}}
+{\footnotesize\ttfamily bool check\+If\+Finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{blacks,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{whites }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za sprawdzenie czy gra siê zakoñczy³a 
+\begin{DoxyParams}{Parameters}
+{\em blacks} & wskaŸnik na czarne pionki \\
+\hline
+{\em whites} & wskaŸnik na bia³e pionki \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_functions_8c_a6c37bfb08d60b5a921d61b27175793aa}\label{game_functions_8c_a6c37bfb08d60b5a921d61b27175793aa}} 
+\index{gameFunctions.c@{gameFunctions.c}!displayBoard@{displayBoard}}
+\index{displayBoard@{displayBoard}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{displayBoard()}{displayBoard()}}
+{\footnotesize\ttfamily void display\+Board (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_functions_8h_a5d4aa96c0c332952260890f2254c8a5a}{Game\+Board}}}]{board }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za wyœwietlanie planszy 
+\begin{DoxyParams}{Parameters}
+{\em board} & wskaŸnik na planszê \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_functions_8c_abda8a273033f5b06e1c7ead1b0afc118}\label{game_functions_8c_abda8a273033f5b06e1c7ead1b0afc118}} 
+\index{gameFunctions.c@{gameFunctions.c}!initializeBlackPieces@{initializeBlackPieces}}
+\index{initializeBlackPieces@{initializeBlackPieces}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{initializeBlackPieces()}{initializeBlackPieces()}}
+{\footnotesize\ttfamily void initialize\+Black\+Pieces (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{pieces }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za ustawienie czarnych pionków 
+\begin{DoxyParams}{Parameters}
+{\em pieces} & wskaŸnik do czarnych pionków \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_functions_8c_aee5afcb9d50dd1b5dbf39576f7451a19}\label{game_functions_8c_aee5afcb9d50dd1b5dbf39576f7451a19}} 
+\index{gameFunctions.c@{gameFunctions.c}!initializeBoard@{initializeBoard}}
+\index{initializeBoard@{initializeBoard}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{initializeBoard()}{initializeBoard()}}
+{\footnotesize\ttfamily void initialize\+Board (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game_functions_8h_a5d4aa96c0c332952260890f2254c8a5a}{Game\+Board}} $\ast$}]{board }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za inicjalizacjê planszy 
+\begin{DoxyParams}{Parameters}
+{\em game} & wskaŸnik na planszê \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_functions_8c_af32efe2f6206805de4dabc60155fc92c}\label{game_functions_8c_af32efe2f6206805de4dabc60155fc92c}} 
+\index{gameFunctions.c@{gameFunctions.c}!initializeGame@{initializeGame}}
+\index{initializeGame@{initializeGame}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{initializeGame()}{initializeGame()}}
+{\footnotesize\ttfamily void initialize\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game}{Game}} $\ast$}]{game }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za inicjalizacjê gry 
+\begin{DoxyParams}{Parameters}
+{\em game} & wskaŸnik na strukturê odpowiedzialn¹ \char`\"{}nadzorowanie\char`\"{} gry \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_functions_8c_a0a84b29c96d0de23f6c59d3be956012b}\label{game_functions_8c_a0a84b29c96d0de23f6c59d3be956012b}} 
+\index{gameFunctions.c@{gameFunctions.c}!initializeWhitePieces@{initializeWhitePieces}}
+\index{initializeWhitePieces@{initializeWhitePieces}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{initializeWhitePieces()}{initializeWhitePieces()}}
+{\footnotesize\ttfamily void initialize\+White\+Pieces (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{pieces }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za ustawienie bia³ych pionków 
+\begin{DoxyParams}{Parameters}
+{\em pieces} & wskaŸnik do bia³ych pionków \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_functions_8c_a589c4b9c5e452dbc457ac2d036c3395c}\label{game_functions_8c_a589c4b9c5e452dbc457ac2d036c3395c}} 
+\index{gameFunctions.c@{gameFunctions.c}!movePieces@{movePieces}}
+\index{movePieces@{movePieces}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{movePieces()}{movePieces()}}
+{\footnotesize\ttfamily void move\+Pieces (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{pieces,  }\item[{char}]{colour,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{enemy\+Pieces }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za wykonywanie ruchu pionków 
+\begin{DoxyParams}{Parameters}
+{\em pieces} & wskaŸnik do pionków \\
+\hline
+{\em colour} & kololor pionka \\
+\hline
+{\em enemy\+Pieces} & wskaŸnik do pionków przeciwnika \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_functions_8c_a97b893e109deb1cf3eef412840675dc1}\label{game_functions_8c_a97b893e109deb1cf3eef412840675dc1}} 
+\index{gameFunctions.c@{gameFunctions.c}!updateBoard@{updateBoard}}
+\index{updateBoard@{updateBoard}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{updateBoard()}{updateBoard()}}
+{\footnotesize\ttfamily void update\+Board (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{blacks,  }\item[{\mbox{\hyperlink{struct_piece}{Piece}} $\ast$}]{whites,  }\item[{\mbox{\hyperlink{game_functions_8h_a5d4aa96c0c332952260890f2254c8a5a}{Game\+Board}} $\ast$}]{board }\end{DoxyParamCaption})}
+
+Funkcja odpowiedzialna za odœwie¿enie wyœwietlanej planszy 
+\begin{DoxyParams}{Parameters}
+{\em black} & wskaŸnik do czarnych pionków \\
+\hline
+{\em whites} & wskaŸnik do bia³ych pionków \\
+\hline
+{\em Gameboard} & wskaŸnik na planszê gry \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{game_functions_8c_afc0da56092d1d31d37046d25b6e49037}\label{game_functions_8c_afc0da56092d1d31d37046d25b6e49037}} 
+\index{gameFunctions.c@{gameFunctions.c}!defaultGameBoard@{defaultGameBoard}}
+\index{defaultGameBoard@{defaultGameBoard}!gameFunctions.c@{gameFunctions.c}}
+\doxysubsubsection{\texorpdfstring{defaultGameBoard}{defaultGameBoard}}
+{\footnotesize\ttfamily const char default\+Game\+Board\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{ \{}
+\DoxyCodeLine{     \{\textcolor{charliteral}{'0'}, \textcolor{charliteral}{'w'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'w'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'w'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'w'}\},}
+\DoxyCodeLine{    \{\textcolor{charliteral}{'w'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'w'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'w'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'w'}, \textcolor{charliteral}{'0'}\},}
+\DoxyCodeLine{    \{\textcolor{charliteral}{'0'}, \textcolor{charliteral}{'w'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'w'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'w'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'w'}\},}
+\DoxyCodeLine{    \{\textcolor{charliteral}{'0'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'0'}\},}
+\DoxyCodeLine{    \{\textcolor{charliteral}{'0'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'0'}\},}
+\DoxyCodeLine{    \{\textcolor{charliteral}{'b'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'b'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'b'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'b'}, \textcolor{charliteral}{'0'}\},}
+\DoxyCodeLine{    \{\textcolor{charliteral}{'0'}, \textcolor{charliteral}{'b'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'b'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'b'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'b'}\},}
+\DoxyCodeLine{    \{\textcolor{charliteral}{'b'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'b'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'b'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'b'}, \textcolor{charliteral}{'0'}\}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

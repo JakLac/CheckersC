@@ -44,6 +44,7 @@ int main()
 		printf("%s", "White's turn\n");
 		//move whites
 		movePieces(whites, 'w', blacks);
+		game.running == !checkIfFinish(blacks, whites);
 		updateBoard(blacks, whites, &game.board);
 		system("cls");
 		displayBoard(game.board);

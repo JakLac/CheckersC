@@ -21,15 +21,8 @@ Piece whites[12];
 
 int main()
 {
-	FILE* fp;
-	int games = 0;
-	fp = fopen("StartedGamesCnt.txt", "r+");
-	fscanf(fp, "%d", &games);
-	fclose(fp);
-	games++;
-	fp = fopen("StartedGamesCnt.txt", "w+");
-	fprintf(fp, "%d", games);
-	fclose(fp);
+
+	startGamesPlayed();
 	Game game;
 	
 	initializeGame(&game);
@@ -55,7 +48,7 @@ int main()
 		//moves!
 
 	}
-	for (int i = 0; i < 8; i++)\
+	for (int i = 0; i < 8; i++)
 	{
 		free(game.board[i]);
 		free(game.board);

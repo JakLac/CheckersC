@@ -10,7 +10,7 @@
 * Plik nag≥Ûwkowy zawierajπcy deklaracje wszystkich funkcji i struktur uøywanych w programie
 */
 
-extern  const char defaultGameBoard[8][8];
+extern  const char defaultGameBoard[9][9];
 
 /**
 Nazwanie wskaünika na wskaünik charÛw(potrzebny do opisu dwuwymiarowej tablicy) gameBoard
@@ -128,10 +128,11 @@ void checkIfBecameQueen(Piece* foundpiece);
 @param ypos pozycja na osi y
 @param colour kolor pionka
 */
-Piece* InputFindPiece(Piece* pieces, int xpos, int ypos, char colour);
+Piece* InputFindPiece(Piece* pieces, int xpos, int ypos, char colour, Piece* enemyPieces);
 /** Funkcja odpowiedzialna za sprawdzenie czy gra siÍ zakoÒczy≥a
 @param blacks wskaünik na czarne pionki
 @param whites wskaünik na bia≥e pionki
 */
 bool checkIfFinish(Piece* blacks, Piece* whites);
 
+void startGamesPlayed();

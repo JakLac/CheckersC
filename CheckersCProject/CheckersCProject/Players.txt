@@ -1,2 +1,5 @@
-a 5
-b 4
+papa 3
+baba 2
+jan 1
+pawel 1
+ja 1

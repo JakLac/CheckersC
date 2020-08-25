@@ -35,7 +35,7 @@
 	 int i = 0;
 
 	 FILE* file;
-	 file = fopen("Players.txt", "ab+");
+	 file = fopen("Players.txt", "a+");
 	 printf("WHITE PLAYER, STATE YOUR NAME\n");
 	 scanf("%s", stringName);
 
@@ -88,7 +88,14 @@
 	}
 	 fclose(file);
 	
-	 file = fopen("Players.txt", "ab+");
+	 for (int a = 0; a < 5000; a++)
+	 {
+		 free(stringFile[a]);
+	 }
+	 free(stringFile);
+	 free(gamesPlayed);
+
+	 file = fopen("Players.txt", "a+");
 	 printf("BLACK PLAYER, STATE YOUR NAME\n");
 	 scanf("%s", stringName);
 
@@ -124,6 +131,8 @@
 		 printf("HELLO %s, YOU ARE A FIRST-TIME PLAYER\n", stringName);
 
 	 }
+
+
 	 fclose(file);
 	 file = fopen("Players.txt", "w");
 	 for (int a = 0; a < i; a++)
@@ -140,6 +149,8 @@
 		 fprintf(file, "%d", 1);
 		 fprintf(file, "%s", "\n");
 	 }
+
+
 	 fclose(file);
 
 
@@ -591,6 +602,9 @@ bool checkForEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece
 				*newxpos = enemyPieces[i].xpos + 1;
 				*newypos = enemyPieces[i].ypos - 1;
 				enemyPieces[i].active = false;
+				//test
+				enemyPieces[i].ypos = 999;
+				enemyPieces[i].xpos = 999;
 				hasBeaten = true;
 				break;
 			}
@@ -601,6 +615,9 @@ bool checkForEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece
 				*newxpos = enemyPieces[i].xpos - 1;
 				*newypos = enemyPieces[i].ypos - 1;
 				enemyPieces[i].active = false;
+				//test
+				enemyPieces[i].ypos = 999;
+				enemyPieces[i].xpos = 999;
 				hasBeaten = true;
 				break;
 			}
@@ -619,6 +636,9 @@ bool checkForEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece
 					*newxpos = enemyPieces[i].xpos + 1;
 					*newypos = enemyPieces[i].ypos - 1;
 					enemyPieces[i].active = false;
+					//test
+					enemyPieces[i].ypos = 999;
+					enemyPieces[i].xpos = 999;
 					hasBeaten = true;
 					break;
 				}
@@ -629,6 +649,9 @@ bool checkForEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece
 					*newxpos = enemyPieces[i].xpos - 1;
 					*newypos = enemyPieces[i].ypos - 1;
 					enemyPieces[i].active = false;
+					//test
+					enemyPieces[i].ypos = 999;
+					enemyPieces[i].xpos = 999;
 					hasBeaten = true;	
 					break;
 				}
@@ -695,6 +718,9 @@ bool checkForEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces, Piece
 				*newxpos = enemyPieces[i].xpos + 1;
 				*newypos = enemyPieces[i].ypos + 1;
 				enemyPieces[i].active = false;
+				//test
+				enemyPieces[i].ypos = 999;
+				enemyPieces[i].xpos = 999;
 				hasBeaten = true;
 				break;
 			}
@@ -705,6 +731,9 @@ bool checkForEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces, Piece
 				*newxpos = enemyPieces[i].xpos - 1;
 				*newypos = enemyPieces[i].ypos + 1;
 				enemyPieces[i].active = false;
+				//test
+				enemyPieces[i].ypos = 999;
+				enemyPieces[i].xpos = 999;
 				hasBeaten = true;
 				break;
 			}
@@ -723,6 +752,9 @@ bool checkForEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces, Piece
 					*newxpos = enemyPieces[i].xpos + 1;
 					*newypos = enemyPieces[i].ypos + 1;
 					enemyPieces[i].active = false;
+					//test
+					enemyPieces[i].ypos = 999;
+					enemyPieces[i].xpos = 999;
 					hasBeaten = true;
 					break;
 				}
@@ -733,6 +765,9 @@ bool checkForEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces, Piece
 					*newxpos = enemyPieces[i].xpos - 1;
 					*newypos = enemyPieces[i].ypos + 1;
 					enemyPieces[i].active = false;
+					//test
+					enemyPieces[i].ypos = 999;
+					enemyPieces[i].xpos = 999;
 					hasBeaten = true;
 					break;
 				}
@@ -820,6 +855,9 @@ bool checkForFurtherEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces
 		*newxpos = leftEnemy->xpos - 1;
 		*newypos = leftEnemy->ypos - 1;
 		leftEnemy->active = false;
+		//test
+		leftEnemy->xpos = 999;
+		leftEnemy->ypos = 999;
 		return true;
 	}
 
@@ -828,6 +866,9 @@ bool checkForFurtherEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces
 		*newxpos = rightEnemy->xpos + 1;
 		*newypos = rightEnemy->ypos - 1;
 		rightEnemy->active = false;
+		//test
+		rightEnemy->xpos = 999;
+		rightEnemy->ypos = 999;
 		return true;
 	}
 
@@ -843,6 +884,9 @@ bool checkForFurtherEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces
 			*newxpos = leftEnemy->xpos - 1;
 			*newypos = leftEnemy->ypos - 1;
 			leftEnemy->active = false;
+			//test
+			leftEnemy->xpos = 999;
+			leftEnemy->ypos = 999;
 			return true;
 		}
 		else if (dir == 'r')
@@ -850,6 +894,9 @@ bool checkForFurtherEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces
 			*newxpos = leftEnemy->xpos + 1;
 			*newypos = leftEnemy->ypos - 1;
 			rightEnemy->active = false;
+			//test
+			rightEnemy->xpos = 999;
+			rightEnemy->ypos = 999;
 			return true;
 		}
 	}
@@ -929,6 +976,9 @@ bool checkForFurtherEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces
 		*newxpos = leftEnemy->xpos - 1;
 		*newypos = leftEnemy->ypos + 1;
 		leftEnemy->active = false;
+		//test
+		leftEnemy->xpos = 999;
+		leftEnemy->ypos = 999;
 		return true;
 	}
 
@@ -937,6 +987,9 @@ bool checkForFurtherEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces
 		*newxpos = rightEnemy->xpos + 1;
 		*newypos = rightEnemy->ypos + 1;
 		rightEnemy->active = false;
+		//test
+		rightEnemy->xpos = 999;
+		rightEnemy->ypos = 999;
 		return true;
 	}
 
@@ -945,13 +998,16 @@ bool checkForFurtherEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces
 		printf("%s", "(L)eft or (R)ight?");
 		while (dir != 'l' && dir != 'r')
 		{
-			scanf("%c", dir);
+			scanf("%c", &dir);
 		}
 		if (dir == 'l')
 		{
 			*newxpos = leftEnemy->xpos - 1;
 			*newypos = leftEnemy->ypos + 1;
 			leftEnemy->active = false;
+			//test
+			leftEnemy->xpos = 999;
+			leftEnemy->ypos = 999;
 			return true;
 		}
 		else if (dir == 'r')
@@ -959,6 +1015,9 @@ bool checkForFurtherEnemiesAsNotQueenWhite(Piece* foundPiece, Piece* enemyPieces
 			*newxpos = rightEnemy->xpos + 1;
 			*newypos = rightEnemy->ypos + 1;
 			rightEnemy->active = false;
+			//test
+			rightEnemy->xpos = 999;
+			rightEnemy->ypos = 999;
 			return true;
 		}
 	}
@@ -1014,6 +1073,9 @@ bool checkForEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece* ownPie
 					*newxpos = enemyPieces[i].xpos + 1;
 					*newypos = enemyPieces[i].ypos - 1;
 					enemyPieces[i].active = false;
+					//test
+					enemyPieces[i].xpos = 999;
+					enemyPieces[i].ypos = 999;
 					hasBeaten = true;
 					break;
 				}
@@ -1024,6 +1086,9 @@ bool checkForEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece* ownPie
 					*newxpos = enemyPieces[i].xpos - 1;
 					*newypos = enemyPieces[i].ypos - 1;
 					enemyPieces[i].active = false;
+					//test
+					enemyPieces[i].xpos = 999;
+					enemyPieces[i].ypos = 999;
 					hasBeaten = true;
 					break;
 				}
@@ -1041,6 +1106,9 @@ bool checkForEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece* ownPie
 						*newxpos = enemyPieces[i].xpos + 1;
 						*newypos = enemyPieces[i].ypos - 1;
 						enemyPieces[i].active = false;
+						//test
+						enemyPieces[i].xpos = 999;
+						enemyPieces[i].ypos = 999;
 						hasBeaten = true;
 						break;
 					}
@@ -1051,6 +1119,9 @@ bool checkForEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece* ownPie
 						*newxpos = enemyPieces[i].xpos - 1;
 						*newypos = enemyPieces[i].ypos - 1;
 						enemyPieces[i].active = false;
+						//test
+						enemyPieces[i].xpos = 999;
+						enemyPieces[i].ypos = 999;
 						hasBeaten = true;
 						break;
 					}
@@ -1087,6 +1158,9 @@ bool checkForEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece* ownPie
 					*newxpos = enemyPieces[i].xpos + 1;
 					*newypos = enemyPieces[i].ypos + 1;
 					enemyPieces[i].active = false;
+					//test
+					enemyPieces[i].xpos = 999;
+					enemyPieces[i].ypos = 999;
 					hasBeaten = true;
 					break;
 				}
@@ -1097,6 +1171,9 @@ bool checkForEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece* ownPie
 					*newxpos = enemyPieces[i].xpos - 1;
 					*newypos = enemyPieces[i].ypos + 1;
 					enemyPieces[i].active = false;
+					//test
+					enemyPieces[i].xpos = 999;
+					enemyPieces[i].ypos = 999;
 					hasBeaten = true;
 					break;
 				}
@@ -1114,6 +1191,9 @@ bool checkForEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece* ownPie
 						*newxpos = enemyPieces[i].xpos + 1;
 						*newypos = enemyPieces[i].ypos + 1;
 						enemyPieces[i].active = false;
+						//test
+						enemyPieces[i].xpos = 999;
+						enemyPieces[i].ypos = 999;
 						hasBeaten = true;
 						break;
 					}
@@ -1124,6 +1204,9 @@ bool checkForEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece* ownPie
 						*newxpos = enemyPieces[i].xpos - 1;
 						*newypos = enemyPieces[i].ypos + 1;
 						enemyPieces[i].active = false;
+						//test
+						enemyPieces[i].xpos = 999;
+						enemyPieces[i].ypos = 999;
 						hasBeaten = true;
 						break;
 					}
@@ -1256,14 +1339,16 @@ bool checkForFurtherEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece*
 		return false;
 	}
 
-	//TO FINISH: 
-	//checking all the cases
+
 	
 	if (canBeatLeftDown == true && canBeatRightDown == false && canBeatLeftUp == false && canBeatRightUp == false)
 	{
 		*newxpos = leftEnemyDown->xpos - 1;
 		*newypos = leftEnemyDown->ypos + 1;
 		leftEnemyDown->active = false;
+		//test
+		leftEnemyDown->xpos = 999;
+		leftEnemyDown->ypos = 999;
 		return true;
 	}
 	else if (canBeatLeftDown == false && canBeatRightDown == true && canBeatLeftUp == false && canBeatRightUp == false)
@@ -1271,6 +1356,9 @@ bool checkForFurtherEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece*
 		*newxpos = rightEnemyDown->xpos + 1;
 		*newypos = rightEnemyDown->ypos + 1;
 		rightEnemyDown->active = false;
+		//test
+		rightEnemyDown->xpos = 999;
+		rightEnemyDown->ypos = 999;
 		return true;
 	}
 	else if (canBeatLeftDown == false && canBeatRightDown == false && canBeatLeftUp == true && canBeatRightUp == false)
@@ -1278,6 +1366,9 @@ bool checkForFurtherEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece*
 		*newxpos = leftEnemyUp->xpos - 1;
 		*newypos = leftEnemyUp->ypos - 1;
 		leftEnemyUp->active = false;
+		//test
+		leftEnemyUp->xpos = 999;
+		leftEnemyUp->ypos = 999;
 		return true;
 	}
 	else if (canBeatLeftDown == false && canBeatRightDown == false && canBeatLeftUp == false && canBeatRightUp == true)
@@ -1285,6 +1376,9 @@ bool checkForFurtherEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece*
 		*newxpos = rightEnemyUp->xpos + 1;
 		*newypos = rightEnemyUp->ypos - 1;
 		rightEnemyUp->active = false;
+		//test
+		rightEnemyUp->xpos = 999;
+		rightEnemyUp->ypos = 999;
 		return true;
 	}
 	//ADDING CHOICE!
@@ -1325,6 +1419,9 @@ bool checkForFurtherEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece*
 			*newxpos = leftEnemyUp->xpos - 1;
 			*newypos = leftEnemyUp->ypos - 1;
 			leftEnemyUp->active = false;
+			//test
+			leftEnemyUp->xpos = 999;
+			leftEnemyUp->ypos = 999;
 			return true;
 		}
 		else if (dir == 'w')
@@ -1332,6 +1429,9 @@ bool checkForFurtherEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece*
 			*newxpos = rightEnemyUp->xpos + 1;
 			*newypos = rightEnemyUp->ypos - 1;
 			rightEnemyUp->active = false;
+			//test
+			rightEnemyUp->xpos = 999;
+			rightEnemyUp->ypos = 999;
 			return true;
 		}
 		else if (dir == 'a')
@@ -1339,6 +1439,9 @@ bool checkForFurtherEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece*
 			*newxpos = leftEnemyDown->xpos - 1;
 			*newypos = leftEnemyDown->ypos + 1;
 			leftEnemyDown->active = false;
+			//test
+			leftEnemyDown->xpos = 999;
+			leftEnemyDown->ypos = 999;
 			return true;
 		}
 		else if (dir == 's')
@@ -1346,6 +1449,9 @@ bool checkForFurtherEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece*
 			*newxpos = rightEnemyDown->xpos + 1;
 			*newypos = rightEnemyDown->ypos + 1;
 			rightEnemyDown->active = false;
+			//test
+			rightEnemyDown->xpos = 999;
+			rightEnemyDown->ypos = 999;
 			return true;
 		}
 	}

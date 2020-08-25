@@ -136,3 +136,4 @@ Piece* InputFindPiece(Piece* pieces, int xpos, int ypos, char colour, Piece* ene
 bool checkIfFinish(Piece* blacks, Piece* whites);
 
 void startGamesPlayed();
+void checkForPlayers();

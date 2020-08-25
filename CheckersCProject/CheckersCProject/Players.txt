@@ -1,5 +1,9 @@
-papa 5
-baba 4
+papa 8
+baba 7
 papiez 2
 oka 2
 koa 1
+pa 1
+a 15
+1 4
+2 4

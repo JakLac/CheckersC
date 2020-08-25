@@ -222,16 +222,13 @@ Piece* InputFindPiece(Piece* pieces, int* xpos, int* ypos, char colour, Piece* e
 		incorrect = false;
 		// scanf("%d", xpos);
 		//scanf("%d", ypos);
-		if (!scanf("%d", xpos))
+
+		if (scanf("%d %d", xpos, ypos) != 2)
 		{
 			fseek(stdin, 0, SEEK_END);
 			incorrect = true;
 		}
-		if (!scanf("%d", ypos))
-		{
-			fseek(stdin, 0, SEEK_END);
-			incorrect = true;
-		}
+	
 		printf("%d", *xpos);
 		printf("%d", *ypos);
 
@@ -248,13 +245,7 @@ Piece* InputFindPiece(Piece* pieces, int* xpos, int* ypos, char colour, Piece* e
 	{
 		if (found == false)
 		{
-			printf("%s", "Piece not there!");
-			if (!scanf("%d", xpos))
-			{
-				fseek(stdin, 0, SEEK_END);
-				incorrect = true;
-			}
-			if (!scanf("%d", ypos))
+			if (scanf("%d %d", xpos, ypos) != 2)
 			{
 				fseek(stdin, 0, SEEK_END);
 				incorrect = true;
@@ -376,17 +367,11 @@ void movePieces(Piece* pieces, char colour, Piece* enemyPieces)
 	printf("%s", "Where would you like to move to? xpos first, then ypos.");
 	//scanf("%d", &newxpos);
 	//scanf("%d", &newypos);
-	if (!scanf("%d", &newxpos))
+	if (scanf("%d %d", &newxpos, &newypos) != 2)
 	{
 		fseek(stdin, 0, SEEK_END);
 		newIncorrect = true;
 	}
-	if (!scanf("%d", &newypos))
-	{
-		fseek(stdin, 0, SEEK_END);
-		newIncorrect = true;
-	}
-
 //	bool newIncorrect = false;
 	if (newxpos < 0 || newypos < 0 || newxpos>7 || newypos>7)
 		newIncorrect = true;
@@ -398,12 +383,7 @@ void movePieces(Piece* pieces, char colour, Piece* enemyPieces)
 			printf("%s", "Incorrect input!");
 			//scanf("%d", &newxpos);
 			//scanf("%d", &newypos);
-			if (!scanf("%d", &newxpos))
-			{
-				fseek(stdin, 0, SEEK_END);
-				newIncorrect = true;
-			}
-			if (!scanf("%d", &newypos))
+			if (scanf("%d %d", &newxpos, &newypos) != 2)
 			{
 				fseek(stdin, 0, SEEK_END);
 				newIncorrect = true;

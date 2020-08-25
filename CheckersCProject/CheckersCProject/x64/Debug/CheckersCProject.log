@@ -1,1 +1,11 @@
-﻿  CheckersCProject.vcxproj -> C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\x64\Debug\CheckersCProject.exe
+﻿  gameFunctions.c
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(58,15): warning C4013: niezdefiniowany "strcmp"; przy założeniu, że extern zwraca int
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(60,12): warning C4013: niezdefiniowany "strcpy"; przy założeniu, że extern zwraca int
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(212,1): warning C4028: formalny parametr 2 różni się od deklaracji
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(212,1): warning C4028: formalny parametr 3 różni się od deklaracji
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(801,10): warning C4477: „scanf”: ciąg formatu „%c” wymaga argumentu typu „char *”, ale argument 1 ze zmienną liczbą argumentów ma typ „int”
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(351): warning C4715: "InputFindPiece”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(945): warning C4715: "checkForFurtherEnemiesAsNotQueenWhite”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(824): warning C4715: "checkForFurtherEnemiesAsNotQueenBlack”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\CheckersCProject\gameFunctions.c(1380): warning C4715: "checkForFurtherEnemiesAsQueen”: niewszystkie ścieżki kodu zwracają wartość
+  CheckersCProject.vcxproj -> C:\Users\jakla\OneDrive\Pulpit\projekt\CheckersC\CheckersCProject\x64\Debug\CheckersCProject.exe

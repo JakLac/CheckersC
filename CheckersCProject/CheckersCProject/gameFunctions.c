@@ -12,96 +12,96 @@
 */
 
 //NO LONGER NEEDED.
- const char defaultGameBoard[9][9] =
- {
-	 {'0', 'w', '0', 'w', '0', 'w', '0', 'w'},
-	{'w', '0', 'w', '0', 'w', '0', 'w', '0'},
+const char defaultGameBoard[9][9] =
+{
 	{'0', 'w', '0', 'w', '0', 'w', '0', 'w'},
-	{'0', '0', '0', '0', '0', '0', '0', '0'},
-	{'0', '0', '0', '0', '0', '0', '0', '0'},
-	{'b', '0', 'b', '0', 'b', '0', 'b', '0'},
-	{'0', 'b', '0', 'b', '0', 'b', '0', 'b'},
-	{'b', '0', 'b', '0', 'b', '0', 'b', '0'}
+   {'w', '0', 'w', '0', 'w', '0', 'w', '0'},
+   {'0', 'w', '0', 'w', '0', 'w', '0', 'w'},
+   {'0', '0', '0', '0', '0', '0', '0', '0'},
+   {'0', '0', '0', '0', '0', '0', '0', '0'},
+   {'b', '0', 'b', '0', 'b', '0', 'b', '0'},
+   {'0', 'b', '0', 'b', '0', 'b', '0', 'b'},
+   {'b', '0', 'b', '0', 'b', '0', 'b', '0'}
 };
 
- void startGamesPlayed()
- {
-	 int* gamesPlayed;
-	 int foundGamesPlayed = 0;
-	 char stringName[256];
-	 char** stringFile;
-	 char foundName[256];
+void startGamesPlayed()
+{
+	int* gamesPlayed;
+	int foundGamesPlayed = 0;
+	char stringName[256];
+	char** stringFile;
+	char foundName[256];
 
-	 for (int z = 0; z < 2; z++)
-	 {
-		 int i = 0;
+	for (int z = 0; z < 2; z++)
+	{
+		int i = 0;
 
-		 FILE* file;
-		 file = fopen("Players.txt", "a+");
-		 if(z == 0) 
+		FILE* file;
+		file = fopen("Players.txt", "a+");
+		if (z == 0)
 			printf("WHITE PLAYER, STATE YOUR NAME\n");
-		 else if(z == 1)
-			 printf("BLACK PLAYER, STATE YOUR NAME\n");
-		 scanf("%s", stringName);
+		else if (z == 1)
+			printf("BLACK PLAYER, STATE YOUR NAME\n");
+		scanf("%s", stringName);
 
-		 gamesPlayed = malloc(sizeof(int) * 5000);
-		 stringFile = malloc(sizeof(char*) * 5000);
-		 for (int i = 0; i < 5000; i++)
-		 {
-			 stringFile[i] = malloc(sizeof(char) * 256);
-		 }
+		gamesPlayed = malloc(sizeof(int) * 5000);
+		stringFile = malloc(sizeof(char*) * 5000);
+		for (int i = 0; i < 5000; i++)
+		{
+			stringFile[i] = malloc(sizeof(char) * 256);
+		}
 
-		 bool found = false;
-		 while (!feof(file))
-		 {
-			 fscanf(file, "%s%d", stringFile[i], &gamesPlayed[i]);
-			 if (strcmp(stringName, stringFile[i]) == 0)
-			 {
-				 strcpy(foundName, stringFile[i]);
-				 foundGamesPlayed = gamesPlayed[i];
-				 found = true;
-				 gamesPlayed[i]++;
-			 }
-			 i++;
-		 }
-		 i--;
-		 if (found)
-		 {
-			 printf("HELLO %s, YOU HAVE PLAYED %d GAMES ALREADY\n", foundName, foundGamesPlayed);
+		bool found = false;
+		while (!feof(file))
+		{
+			fscanf(file, "%s%d", stringFile[i], &gamesPlayed[i]);
+			if (strcmp(stringName, stringFile[i]) == 0)
+			{
+				strcpy(foundName, stringFile[i]);
+				foundGamesPlayed = gamesPlayed[i];
+				found = true;
+				gamesPlayed[i]++;
+			}
+			i++;
+		}
+		i--;
+		if (found)
+		{
+			printf("HELLO %s, YOU HAVE PLAYED %d GAMES ALREADY\n", foundName, foundGamesPlayed);
 
-		 }
-		 else
-		 {
-			 printf("HELLO %s, YOU ARE A FIRST-TIME PLAYER\n", stringName);
+		}
+		else
+		{
+			printf("HELLO %s, YOU ARE A FIRST-TIME PLAYER\n", stringName);
 
-		 }
-		 fclose(file);
-		 file = fopen("Players.txt", "w");
-		 for (int a = 0; a < i; a++)
-		 {
-			 fprintf(file, "%s", stringFile[a]);
-			 fprintf(file, "%s", " ");
-			 fprintf(file, "%d", gamesPlayed[a]);
-			 fprintf(file, "%s", "\n");
-		 }
-		 if (!found)
-		 {
-			 fprintf(file, "%s", stringName);
-			 fprintf(file, "%s", " ");
-			 fprintf(file, "%d", 1);
-			 fprintf(file, "%s", "\n");
-		 }
-		 fclose(file);
+		}
+		fclose(file);
+		file = fopen("Players.txt", "w");
+		for (int a = 0; a < i; a++)
+		{
+			fprintf(file, "%s", stringFile[a]);
+			fprintf(file, "%s", " ");
+			fprintf(file, "%d", gamesPlayed[a]);
+			fprintf(file, "%s", "\n");
+		}
+		if (!found)
+		{
+			fprintf(file, "%s", stringName);
+			fprintf(file, "%s", " ");
+			fprintf(file, "%d", 1);
+			fprintf(file, "%s", "\n");
+		}
+		fclose(file);
 
-		 for (int a = 0; a < 5000; a++)
-		 {
-			 free(stringFile[a]);
-		 }
-		 free(stringFile);
-		 free(gamesPlayed);
+		for (int a = 0; a < 5000; a++)
+		{
+			free(stringFile[a]);
+		}
+		free(stringFile);
+		free(gamesPlayed);
 
-	 }
- }
+	}
+}
 
 
 void initializeGame(Game* game)
@@ -122,14 +122,14 @@ void initializeBlackPieces(Piece* pieces)
 		pieces[i].active = true;
 	}
 
-	pieces[0].ypos = 5; 
-	pieces[0].xpos = 0; 
+	pieces[0].ypos = 5;
+	pieces[0].xpos = 0;
 
 	pieces[1].ypos = 5; //5
 	pieces[1].xpos = 2; //2
 
 	pieces[2].ypos = 5;
-	pieces[2].xpos = 4; 
+	pieces[2].xpos = 4;
 
 	pieces[3].ypos = 5; //5
 	pieces[3].xpos = 6; //6
@@ -137,7 +137,7 @@ void initializeBlackPieces(Piece* pieces)
 	pieces[4].ypos = 6; //6
 	pieces[4].xpos = 1; //1
 
-	pieces[5].ypos = 6; 
+	pieces[5].ypos = 6;
 	pieces[5].xpos = 3;
 
 	pieces[6].ypos = 6;
@@ -194,7 +194,7 @@ void initializeWhitePieces(Piece* pieces)
 	pieces[8].ypos = 2;
 	pieces[8].xpos = 1;
 
-	pieces[9].ypos = 2; 
+	pieces[9].ypos = 2;
 	pieces[9].xpos = 3;
 
 	pieces[10].ypos = 2; //2
@@ -228,7 +228,7 @@ Piece* InputFindPiece(Piece* pieces, int* xpos, int* ypos, char colour, Piece* e
 			fseek(stdin, 0, SEEK_END);
 			incorrect = true;
 		}
-	
+
 		printf("%d", *xpos);
 		printf("%d", *ypos);
 
@@ -341,18 +341,18 @@ Piece* InputFindPiece(Piece* pieces, int* xpos, int* ypos, char colour, Piece* e
 		}
 
 		if (canMoveRight == false && canMoveLeft == false)
-		{ 
+		{
 			printf("Incorrect Input!");
 			return NULL;
 		}
-			
+
 		else return foundPiece;
 	}
 }
 
 void movePieces(Piece* pieces, char colour, Piece* enemyPieces)
 {
-	
+
 	int xpos, ypos;
 	bool newIncorrect = false;
 	Piece* foundPiece = NULL;
@@ -372,7 +372,7 @@ void movePieces(Piece* pieces, char colour, Piece* enemyPieces)
 		fseek(stdin, 0, SEEK_END);
 		newIncorrect = true;
 	}
-//	bool newIncorrect = false;
+	//	bool newIncorrect = false;
 	if (newxpos < 0 || newypos < 0 || newxpos>7 || newypos>7)
 		newIncorrect = true;
 	do
@@ -389,7 +389,7 @@ void movePieces(Piece* pieces, char colour, Piece* enemyPieces)
 				newIncorrect = true;
 			}
 		}
-		
+
 		if (newxpos < 0 || newypos < 0 || newxpos>7 || newypos>7)
 			newIncorrect = true;
 
@@ -415,9 +415,9 @@ void movePieces(Piece* pieces, char colour, Piece* enemyPieces)
 				if (newxpos == xpos + 1 || newxpos == xpos - 1)
 					newIncorrect = false;
 				if (newypos != ypos - 1 && newypos != ypos + 1)
-						newIncorrect = true;
+					newIncorrect = true;
 			}
-			
+
 			//No two pieces of the same colour at the same tile!
 			for (int i = 0; i < 12; i++)
 			{
@@ -463,8 +463,8 @@ void movePieces(Piece* pieces, char colour, Piece* enemyPieces)
 				}
 			}
 			//checking for enemies to beat
-			if(newIncorrect == false && foundPiece->isQueen == false)
-			newIncorrect = checkForEnemiesAsNotQueenWhite(foundPiece, enemyPieces, pieces, &newxpos, &newypos);
+			if (newIncorrect == false && foundPiece->isQueen == false)
+				newIncorrect = checkForEnemiesAsNotQueenWhite(foundPiece, enemyPieces, pieces, &newxpos, &newypos);
 			else if (newIncorrect == false && foundPiece->isQueen == true)
 				newIncorrect = checkForEnemiesAsQueen(foundPiece, enemyPieces, pieces, &newxpos, &newypos);
 		}
@@ -473,8 +473,8 @@ void movePieces(Piece* pieces, char colour, Piece* enemyPieces)
 
 	foundPiece->xpos = newxpos;
 	foundPiece->ypos = newypos;
-	if(foundPiece->isQueen == false)
-	checkIfBecameQueen(foundPiece);
+	if (foundPiece->isQueen == false)
+		checkIfBecameQueen(foundPiece);
 }
 
 bool checkForEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece* ownPieces, int* newxpos, int* newypos)
@@ -573,7 +573,7 @@ bool checkForEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece
 					//test
 					enemyPieces[i].ypos = 999;
 					enemyPieces[i].xpos = 999;
-					hasBeaten = true;	
+					hasBeaten = true;
 					break;
 				}
 
@@ -581,7 +581,7 @@ bool checkForEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces, Piece
 
 
 		}
-			
+
 	}
 	while (hasBeaten)
 		hasBeaten = checkForFurtherEnemiesAsNotQueenBlack(foundPiece, enemyPieces, ownPieces, newxpos, newypos);
@@ -709,7 +709,7 @@ bool checkForFurtherEnemiesAsNotQueenBlack(Piece* foundPiece, Piece* enemyPieces
 	char dir = 'z';
 	bool canBeatRight = false;
 	bool canBeatLeft = false;
-	
+
 	for (int i = 0; i < 12; i++)
 	{
 		if (enemyPieces[i].xpos == *newxpos + 1 && enemyPieces[i].ypos == *newypos - 1)
@@ -952,7 +952,7 @@ bool checkForEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece* ownPie
 	bool canBeatToRightUp = true;
 	bool canBeatToLeftDown = true;
 	bool canBeatToRightDown = true;
-	
+
 	char dir = 'z';
 
 	for (int i = 0; i < 12; i++)
@@ -964,7 +964,7 @@ bool checkForEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece* ownPie
 				newIncorrect = true;
 				break;
 			}
-			
+
 			if (foundPiece->ypos > enemyPieces[i].ypos) //BEATING UP!
 			{
 				canBeatToRightDown = false;
@@ -1136,10 +1136,10 @@ bool checkForEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece* ownPie
 			}
 		}
 
-		
+
 	}
 	while (hasBeaten)
-	hasBeaten = checkForFurtherEnemiesAsQueen(foundPiece, enemyPieces, ownPieces, newxpos, newypos);
+		hasBeaten = checkForFurtherEnemiesAsQueen(foundPiece, enemyPieces, ownPieces, newxpos, newypos);
 	return newIncorrect;
 }
 
@@ -1188,7 +1188,7 @@ bool checkForFurtherEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece*
 			canBeatLeftUp = false;
 		for (int i = 0; i < 12; i++)
 		{
-			if ((enemyPieces[i].xpos == leftEnemyUp->xpos - 1 && enemyPieces[i].ypos == leftEnemyUp->ypos - 1 ) || (ownPieces[i].xpos == leftEnemyUp->xpos - 1 && ownPieces[i].ypos == leftEnemyUp->ypos - 1))
+			if ((enemyPieces[i].xpos == leftEnemyUp->xpos - 1 && enemyPieces[i].ypos == leftEnemyUp->ypos - 1) || (ownPieces[i].xpos == leftEnemyUp->xpos - 1 && ownPieces[i].ypos == leftEnemyUp->ypos - 1))
 				canBeatLeftUp = false;
 		}
 	}
@@ -1261,7 +1261,7 @@ bool checkForFurtherEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece*
 	}
 
 
-	
+
 	if (canBeatLeftDown == true && canBeatRightDown == false && canBeatLeftUp == false && canBeatRightUp == false)
 	{
 		*newxpos = leftEnemyDown->xpos - 1;
@@ -1322,7 +1322,7 @@ bool checkForFurtherEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece*
 		bool incMove = false;
 		do
 		{
-			if(incMove)
+			if (incMove)
 				scanf("%c", &dir);
 
 			if (dir == 'q' && canBeatLeftUp == false)
@@ -1334,7 +1334,7 @@ bool checkForFurtherEnemiesAsQueen(Piece* foundPiece, Piece* enemyPieces, Piece*
 			else if (dir == 'w' && canBeatRightDown == false)
 				incMove = true;
 		} while (incMove);
-		
+
 		if (dir == 'q')
 		{
 			*newxpos = leftEnemyUp->xpos - 1;
@@ -1400,7 +1400,7 @@ void initializeBoard(GameBoard* board)
 {
 	*board = (char**)malloc(9 * sizeof(char*));
 	for (int i = 0; i < 9; i++)
-	{	
+	{
 		(*board)[i] = (char*)malloc(9 * sizeof(char));
 	}
 
@@ -1445,18 +1445,18 @@ void updateBoard(Piece* blacks, Piece* whites, GameBoard* board)
 			(*board)[i][y] = '0';
 		}
 	}
-		for (int i = 0; i < 12; i++)
+	for (int i = 0; i < 12; i++)
+	{
+		if (blacks[i].active)
 		{
-			if (blacks[i].active)
-			{
-				(*board)[blacks[i].ypos][blacks[i].xpos] = blacks[i].colour;
-			}
-			if (whites[i].active)
-			{
-				(*board)[whites[i].ypos][whites[i].xpos] = whites[i].colour;
-			}
+			(*board)[blacks[i].ypos][blacks[i].xpos] = blacks[i].colour;
 		}
-	
+		if (whites[i].active)
+		{
+			(*board)[whites[i].ypos][whites[i].xpos] = whites[i].colour;
+		}
+	}
+
 }
 
 
@@ -1473,16 +1473,17 @@ void displayBoard(GameBoard board)
 	}
 }
 
+
 bool checkIfFinish(Piece* blacks, Piece* whites)
 {
 	int w = 0;
 	for (int i = 0; i < 12; i++)
 	{
-		if (whites[i].active)
+		if (whites[i].xpos == 999)
 			w++;
 	}
 
-	if (w == 0)
+	if (w == 12)
 	{
 		printf("BLACKS WON!");
 		return true;
@@ -1491,10 +1492,10 @@ bool checkIfFinish(Piece* blacks, Piece* whites)
 	int b = 0;
 	for (int i = 0; i < 12; i++)
 	{
-		if (blacks[i].active)
+		if (blacks[i].xpos == 999)
 			b++;
 	}
-	if (b == 0)
+	if (b == 12)
 	{
 		printf("WHITES WON!");
 		return true;

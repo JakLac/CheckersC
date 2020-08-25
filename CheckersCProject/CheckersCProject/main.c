@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <windows.h>
-
+#include <dos.h>
 #include "gameFunctions.h"
 
 Piece blacks[12];
@@ -28,6 +28,7 @@ int main()
 	initializeGame(&game);
 	initializeBlackPieces(blacks);
 	initializeWhitePieces(whites);
+
 	while (game.running)
 	{
 		updateBoard(blacks, whites, &game.board);
@@ -37,21 +38,33 @@ int main()
 		printf("%s", "White's turn\n");
 		//move whites
 		movePieces(whites, 'w', blacks);
-		game.running == !checkIfFinish(blacks, whites);
+		game.running = !checkIfFinish(blacks, whites);
+		if (game.running == false)
+		{
+			Sleep(5000);
+			system("cls");
+			break;
+		}
+
 		updateBoard(blacks, whites, &game.board);
 		system("cls");
 		displayBoard(game.board);
 		printf("%s", "Black's turn\n");
 		//move blacks
 		movePieces(blacks, 'b', whites);
-		game.running == !checkIfFinish(blacks, whites);
+		game.running = !checkIfFinish(blacks, whites);
+		if (game.running == false)
+		{
+			Sleep(5000);
+			system("cls");
+			break;
+		}
 		//moves!
 
 	}
 	for (int i = 0; i < 8; i++)
 	{
 		free(game.board[i]);
-		free(game.board);
 	}
 	return 0;
 }

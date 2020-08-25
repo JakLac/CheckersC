@@ -26,142 +26,83 @@
 
  void startGamesPlayed()
  {
-	 int *gamesPlayed;
+	 int* gamesPlayed;
 	 int foundGamesPlayed = 0;
 	 char stringName[256];
-	 char **stringFile;
+	 char** stringFile;
 	 char foundName[256];
 
-	 int i = 0;
-
-	 FILE* file;
-	 file = fopen("Players.txt", "a+");
-	 printf("WHITE PLAYER, STATE YOUR NAME\n");
-	 scanf("%s", stringName);
-
-	 gamesPlayed = malloc(sizeof(int) * 5000);
-	 stringFile = malloc(sizeof(char*) * 5000);
-	 for (int i = 0; i < 5000; i++)
+	 for (int z = 0; z < 2; z++)
 	 {
-		 stringFile[i] = malloc(sizeof(char) * 256);
-	 }
+		 int i = 0;
 
-	 bool found = false;
-	 while (!feof(file))
-	 {
-		 fscanf(file, "%s%d", stringFile[i], &gamesPlayed[i]);
-		 if (strcmp(stringName, stringFile[i]) == 0)
+		 FILE* file;
+		 file = fopen("Players.txt", "a+");
+		 if(z == 0) 
+			printf("WHITE PLAYER, STATE YOUR NAME\n");
+		 else if(z == 1)
+			 printf("BLACK PLAYER, STATE YOUR NAME\n");
+		 scanf("%s", stringName);
+
+		 gamesPlayed = malloc(sizeof(int) * 5000);
+		 stringFile = malloc(sizeof(char*) * 5000);
+		 for (int i = 0; i < 5000; i++)
 		 {
-			 strcpy(foundName, stringFile[i]);
-			 foundGamesPlayed = gamesPlayed[i];
-			 found = true;
-			 gamesPlayed[i]++;
+			 stringFile[i] = malloc(sizeof(char) * 256);
 		 }
-		 i++;
-	 }
-	 i--;
-	 if (found)
-	 {
-		 printf("HELLO %s, YOU HAVE PLAYED %d GAMES ALREADY\n", foundName, foundGamesPlayed);
 
-	 }
-	 else
-	 {
-		 printf("HELLO %s, YOU ARE A FIRST-TIME PLAYER\n", stringName);
-
-	 }
-	 fclose(file);
-	 file = fopen("Players.txt", "w");
-	 for (int a = 0; a < i; a++)
-	 {
-		 fprintf(file, "%s", stringFile[a]);
-		 fprintf(file, "%s", " ");
-		 fprintf(file, "%d", gamesPlayed[a]);
-		 fprintf(file, "%s", "\n");
-	 }
-	 if (!found)
-	 {
-		 fprintf(file, "%s", stringName);
-		 fprintf(file, "%s", " ");
-		 fprintf(file, "%d", 1);
-		 fprintf(file, "%s", "\n");
-	}
-	 fclose(file);
-	
-	 for (int a = 0; a < 5000; a++)
-	 {
-		 free(stringFile[a]);
-	 }
-	 free(stringFile);
-	 free(gamesPlayed);
-
-	 file = fopen("Players.txt", "a+");
-	 printf("BLACK PLAYER, STATE YOUR NAME\n");
-	 scanf("%s", stringName);
-
-	 gamesPlayed = malloc(sizeof(int) * 5000);
-	 stringFile = malloc(sizeof(char*) * 5000);
-	 for (int i = 0; i < 5000; i++)
-	 {
-		 stringFile[i] = malloc(sizeof(char) * 256);
-	 }
-
-	 i = 0;
-	 found = false;
-	 while (!feof(file))
-	 {
-		 fscanf(file, "%s%d", stringFile[i], &gamesPlayed[i]);
-		 if (strcmp(stringName, stringFile[i]) == 0)
+		 bool found = false;
+		 while (!feof(file))
 		 {
-			 strcpy(foundName, stringFile[i]);
-			 foundGamesPlayed = gamesPlayed[i];
-			 found = true;
-			 gamesPlayed[i]++;
+			 fscanf(file, "%s%d", stringFile[i], &gamesPlayed[i]);
+			 if (strcmp(stringName, stringFile[i]) == 0)
+			 {
+				 strcpy(foundName, stringFile[i]);
+				 foundGamesPlayed = gamesPlayed[i];
+				 found = true;
+				 gamesPlayed[i]++;
+			 }
+			 i++;
 		 }
-		 i++;
-	 }
-	 i--;
-	 if (found)
-	 {
-		 printf("HELLO %s, YOU HAVE PLAYED %d GAMES ALREADY\n", foundName, foundGamesPlayed);
+		 i--;
+		 if (found)
+		 {
+			 printf("HELLO %s, YOU HAVE PLAYED %d GAMES ALREADY\n", foundName, foundGamesPlayed);
+
+		 }
+		 else
+		 {
+			 printf("HELLO %s, YOU ARE A FIRST-TIME PLAYER\n", stringName);
+
+		 }
+		 fclose(file);
+		 file = fopen("Players.txt", "w");
+		 for (int a = 0; a < i; a++)
+		 {
+			 fprintf(file, "%s", stringFile[a]);
+			 fprintf(file, "%s", " ");
+			 fprintf(file, "%d", gamesPlayed[a]);
+			 fprintf(file, "%s", "\n");
+		 }
+		 if (!found)
+		 {
+			 fprintf(file, "%s", stringName);
+			 fprintf(file, "%s", " ");
+			 fprintf(file, "%d", 1);
+			 fprintf(file, "%s", "\n");
+		 }
+		 fclose(file);
+
+		 for (int a = 0; a < 5000; a++)
+		 {
+			 free(stringFile[a]);
+		 }
+		 free(stringFile);
+		 free(gamesPlayed);
 
 	 }
-	 else
-	 {
-		 printf("HELLO %s, YOU ARE A FIRST-TIME PLAYER\n", stringName);
-
-	 }
-
-
-	 fclose(file);
-	 file = fopen("Players.txt", "w");
-	 for (int a = 0; a < i; a++)
-	 {
-		 fprintf(file, "%s", stringFile[a]);
-		 fprintf(file, "%s", " ");
-		 fprintf(file, "%d", gamesPlayed[a]);
-		 fprintf(file, "%s", "\n");
-	 }
-	 if (!found)
-	 {
-		 fprintf(file, "%s", stringName);
-		 fprintf(file, "%s", " ");
-		 fprintf(file, "%d", 1);
-		 fprintf(file, "%s", "\n");
-	 }
-
-
-	 fclose(file);
-
-
-	 for (int a = 0; a < 5000; a++)
-	 {
-		 free(stringFile[a]);
-	 }
-	 free(stringFile);
-	 free(gamesPlayed);
-
  }
+
 
 void initializeGame(Game* game)
 {

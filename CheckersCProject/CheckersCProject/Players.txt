@@ -1,5 +1,5 @@
-papa 3
-baba 2
-jan 1
-pawel 1
-ja 1
+papa 5
+baba 4
+papiez 2
+oka 2
+koa 1

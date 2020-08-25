@@ -4,6 +4,6 @@ papiez 2
 oka 2
 koa 1
 pa 1
-a 15
+a 19
 1 4
 2 4

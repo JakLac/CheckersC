@@ -212,13 +212,15 @@ Piece* InputFindPiece(Piece* pieces, int* xpos, int* ypos, char colour, Piece* e
 {
 
 	bool incorrect = false;
+	bool found = true;
+	Piece* foundPiece = NULL;
 	printf("%s", "First give xpos, then ypos (0-7)");
-
 	do
 	{
+		fseek(stdin, 0, SEEK_END);
 		printf("%c", colour);
 		if (incorrect)
-			printf("%s", "Incorrect input!");
+			printf("INCORRECT INPUT");
 		incorrect = false;
 		// scanf("%d", xpos);
 		//scanf("%d", ypos);
@@ -227,30 +229,18 @@ Piece* InputFindPiece(Piece* pieces, int* xpos, int* ypos, char colour, Piece* e
 		{
 			fseek(stdin, 0, SEEK_END);
 			incorrect = true;
+			continue;
 		}
 
 		printf("%d", *xpos);
 		printf("%d", *ypos);
-
 		if (*xpos < 0 || *ypos < 0 || *xpos>7 || *ypos>7)
 			incorrect = true;
-	} while (incorrect);
 
-	Piece* foundPiece = NULL;
+		if (incorrect)
+			continue;
 
 
-	bool found = true;
-
-	do
-	{
-		if (found == false)
-		{
-			if (scanf("%d %d", xpos, ypos) != 2)
-			{
-				fseek(stdin, 0, SEEK_END);
-				incorrect = true;
-			}
-		}
 		for (int i = 0; i < 12; i++)
 		{
 			if (pieces[i].xpos == *xpos && pieces[i].ypos == *ypos && (pieces[i].colour == colour || pieces[i].colour == colour - 32))
@@ -261,6 +251,8 @@ Piece* InputFindPiece(Piece* pieces, int* xpos, int* ypos, char colour, Piece* e
 		}
 		if (foundPiece == NULL)
 			found = false;
+		if (found == false)
+			incorrect = true;
 	} while (found == false);
 
 	if (foundPiece != NULL)
